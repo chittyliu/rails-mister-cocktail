@@ -1,5 +1,13 @@
 <h1>Adding Cocktail</h1>
 
+<!--
+<% #if @cocktail.errors %>
+  <% @cocktail.errors.full_messages.each #do |m| %>
+    <li><%#= m %>  </li>
+  <% #end %>
+<% #end %>
+
+ -->
 <%= simple_form_for(@cocktail) do |f| %>
   <%= f.input :name %>
   <%= f.submit "confirm", class: "btn btn-primary" %>
