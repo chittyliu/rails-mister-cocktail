@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsMisterCocktail</title>
+    <title>Boozy Cocktail Bar</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,46 +12,65 @@
   </head>
 
   <body>
-    <div class="navbar-wagon">
+    <div class="navbar-wagon navbar-fixed-top">
       <!-- Logo -->
-      <a href="/" class="navbar-wagon-brand">
-        <img src="https://www.flaticon.com/free-icon/cocktail_1025851#term=cocktail&page=1&position=11" alt="logo">
-      </a>
+      <%= link_to root_path, class: "navbar-wagon-brand" do %>
+        <%= image_tag "cocktail.png", height: 50 %>
+      <% end %>
 
       <!-- Right Navigation -->
       <div class="navbar-wagon-right hidden-xs hidden-sm">
 
-        <a href="" class="navbar-wagon-item navbar-wagon-link">Host</a>
-        <a href="" class="navbar-wagon-item navbar-wagon-link">Trips</a>
-        <a href="" class="navbar-wagon-item navbar-wagon-link">Messages</a>
+        <!-- Links -->
+        <%= link_to "Host", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to "Trips", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to "Messages", "#", class: "navbar-wagon-item navbar-wagon-link" %>
 
-        <!-- Profile picture with dropdown list -->
+        <!-- Avatar with dropdown menu -->
         <div class="navbar-wagon-item">
           <div class="dropdown">
-            <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
+            <%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
             <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-              <li><a href="#">Profile</a></li>
-              <li><a href="#">Dashboard</a></li>
-              <li><a href="#">Log Out</a></li>
+              <li>
+                <%= link_to "#" do %>
+                  <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to "#" do %>
+                  <i class="fa fa-cog"></i>  <%= t(".settings", default: "Settings") %>
+                <% end %>
+              </li>
             </ul>
           </div>
         </div>
       </div>
 
-      <!-- Dropdown appearing on mobile only -->
+      <!-- Dropdown list appearing on mobile only -->
       <div class="navbar-wagon-item hidden-md hidden-lg">
         <div class="dropdown">
           <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-            <li><a href="#">Host</a></li>
-            <li><a href="#">Trips</a></li>
-            <li><a href="#">Messagese</a></li>
+            <%= link_to "Home", cocktails_path, class: "navbar-wagon-item navbar-wagon-link" %>
           </ul>
         </div>
       </div>
     </div>
 
     <%= yield %>
+
+    <div class="footer">
+      <div class="footer-links">
+        <a href="#"><i class="fa fa-github"></i></a>
+        <a href="#"><i class="fa fa-instagram"></i></a>
+        <a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="#"><i class="fa fa-twitter"></i></a>
+        <a href="#"><i class="fa fa-linkedin"></i></a>
+      </div>
+      <div class="footer-copyright">
+        This footer is made with <i class="fa fa-heart"></i> at Le Wagon
+      </div>
+    </div>
     <%= javascript_include_tag "application" %>
     <%= javascript_pack_tag "application" %>
   </body>
